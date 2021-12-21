@@ -6,4 +6,4 @@
 ![Tetris](https://user-images.githubusercontent.com/85126702/146915126-e1d563db-6c78-40ad-b589-4c6b656f8e63.png)
 
 ## Components: 
-![image](https://user-images.githubusercontent.com/85126702/146915691-15e4b0e0-a772-471c-abd0-c3342ad67891.png)
+![image](https://user-images.githubusercontent.com/85126702/146972126-36094ae4-fcf0-41b2-97e7-b52d770bcb4b.png)
