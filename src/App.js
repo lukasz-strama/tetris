@@ -1,9 +1,9 @@
 import React from 'react';
-import Board from './components/Board';
+import Tetris from './components/Tetris';
 
 const App = () => (
-  <div className='App'>
-    <Board></Board>
+  <div className="App">
+    <Tetris />
   </div>
 );
 
