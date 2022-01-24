@@ -24,7 +24,6 @@ export const StyledTetrisH1 = styled.h1`
   font-family: Nova Square; 
   color: #fff;
   letter-spacing: 2px;
-  font-size: 40px;
   margin: 0 0 10px 0;
   text-align: center;
 `;
@@ -49,4 +48,33 @@ export const StyledTetris = styled.div`
     padding: 0 20px;
     background: #000;
   }
+`;
+
+export const StyledOverlay = styled.div`
+  width: 100vw;
+  position: absolute;
+  height: 100vh;
+`;
+
+export const OverlayBottomAction= styled.div`
+  position: absolute;
+  height: 100px;
+  top: calc(100% - 100px);
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export const OverlayMainAction= styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+export const StyledStartGame = styled.h1`
+  font-family: Nova Square; 
+  color: #fff;
+  letter-spacing: 2px;
+  text-align: center;
+  margin: 0;
 `;

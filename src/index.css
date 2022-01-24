@@ -1,5 +1,9 @@
 body {
-  margin: 0;
+    margin: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nova+Square&display=swap');
+@font-face {
+    font-family: "Nova Square";
+    src: local("Nova Square"),
+        url("./font/NovaSquare.ttf") format("truetype");
+}

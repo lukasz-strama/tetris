@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { createStage, checkCollision } from '../gameHelpers';
-import { StyledTetrisWrapper, StyledTetris, StyledTetrisH1, StyledTetrisBackground, StyledTetrisBoard } from './styles/StyledTetris';
+import { StyledTetrisWrapper, OverlayBottomAction, OverlayMainAction, StyledStartGame, StyledTetris, StyledOverlay, StyledTetrisH1, StyledTetrisBackground, StyledTetrisBoard } from './styles/StyledTetris';
 
 // Custom Hooks
 import { useInterval } from '../hooks/useInterval';
@@ -17,6 +17,7 @@ import StartButton from './StartButton';
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [gameStart, setGameStart] = useState(false);
 
   const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage, rowsCleared] = useStage(player, resetPlayer);
@@ -33,6 +34,19 @@ const Tetris = () => {
   };
 
   const keyUp = ({ keyCode }) => {
+    if(!gameStart) {
+      if (keyCode === 32) {
+        setGameStart(true);
+        startGame();
+      }
+    }
+
+    if(gameOver) {
+      if (keyCode === 32) {
+        startGame();
+      }
+    }
+
     if (!gameOver) {
       // Activate the interval again when user releases down arrow.
       if (keyCode === 83) {
@@ -107,15 +121,38 @@ const Tetris = () => {
       onKeyUp={keyUp}
     >
       <StyledTetrisBackground/>
+      
       <StyledTetrisBoard>
-        
+
         <StyledTetris>
-          <StyledTetrisH1><span style={{color: "#DB0000"}}>T</span><span style={{color: "#FF7A00"}}>E</span><span style={{color: "#FCD400"}}>T</span><span style={{color: "#267800"}}>R</span><span style={{color: "#007CC2"}}>I</span><span style={{color: "#9900CF"}}>S</span></StyledTetrisH1>
+          <StyledTetrisH1 style={{"font-size": 40}}><span style={{color: "#DB0000"}}>T</span><span style={{color: "#FF7A00"}}>E</span><span style={{color: "#FCD400"}}>T</span><span style={{color: "#267800"}}>R</span><span style={{color: "#007CC2"}}>I</span><span style={{color: "#9900CF"}}>S</span></StyledTetrisH1>
           <Stage stage={stage} />
           <aside>
           </aside>
         </StyledTetris>
-
+        {gameOver ? (
+            <StyledOverlay style={{background: "rgba(92, 0, 0, .8)"}}>
+              <OverlayMainAction>
+                <StyledTetrisH1 style={{"font-size": 100}}>Przegrałeś</StyledTetrisH1>
+                <StyledTetrisH1 style={{"font-size": 50}}><span style={{color: "#DB0000"}}>W</span><span style={{color: "#FF7A00"}}>y</span><span style={{color: "#FCD400"}}>n</span><span style={{color: "#267800"}}>i</span><span style={{color: "#007CC2"}}>k</span><span style={{color: "#9900CF"}}>:</span> {score}</StyledTetrisH1>
+              </OverlayMainAction>
+              <OverlayBottomAction>
+                <StyledStartGame style={{"font-size": 40}}>Rozpocznij od nowa</StyledStartGame>
+                <StyledStartGame style={{"font-size": 20}}>(Spacja)</StyledStartGame>
+              </OverlayBottomAction>
+            </StyledOverlay>
+        ):null}
+        {gameStart ? null : (
+          <StyledOverlay style={{background: "rgba(0, 0, 0, .8)"}}>
+            <OverlayMainAction>
+              <StyledTetrisH1 style={{"font-size": 140}}><span style={{color: "#DB0000"}}>T</span><span style={{color: "#FF7A00"}}>E</span><span style={{color: "#FCD400"}}>T</span><span style={{color: "#267800"}}>R</span><span style={{color: "#007CC2"}}>I</span><span style={{color: "#9900CF"}}>S</span></StyledTetrisH1>
+            </OverlayMainAction>
+            <OverlayBottomAction>
+              <StyledStartGame style={{"font-size": 40}}>Rozpocznij grę</StyledStartGame>
+              <StyledStartGame style={{"font-size": 20}}>(Spacja)</StyledStartGame>
+            </OverlayBottomAction>
+          </StyledOverlay>
+        )}
       </StyledTetrisBoard>
     </StyledTetrisWrapper>
   );
