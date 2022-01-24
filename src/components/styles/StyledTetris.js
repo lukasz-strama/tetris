@@ -43,10 +43,14 @@ export const StyledTetris = styled.div`
   position: absolute;
   border-radius: 15px;
   aside {
-    width: 70px;
-    display: block;
-    padding: 0 20px;
-    background: #000;
+    position: absolute;
+    width: 50px;
+    height: 150px;
+    border-radius: 0px 15px 15px 0px;
+    top: 50px;
+    left: 100%;
+    padding: 20px;
+    background-image: linear-gradient(#010104, #02010E);
   }
 `;
 
@@ -59,9 +63,9 @@ export const StyledOverlay = styled.div`
 export const OverlayBottomAction= styled.div`
   position: absolute;
   height: 100px;
+  width: 100%;
+  text-align: center;
   top: calc(100% - 100px);
-  left: 50%;
-  transform: translateX(-50%);
 `;
 
 export const OverlayMainAction= styled.div`

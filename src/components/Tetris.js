@@ -79,7 +79,6 @@ const Tetris = () => {
     } else {
       // Game over!
       if (player.pos.y < 1) {
-        console.log('GAME OVER!!!');
         setGameOver(true);
         setDropTime(null);
       }
@@ -123,14 +122,20 @@ const Tetris = () => {
       <StyledTetrisBackground/>
       
       <StyledTetrisBoard>
-
         <StyledTetris>
           <StyledTetrisH1 style={{"font-size": 40}}><span style={{color: "#DB0000"}}>T</span><span style={{color: "#FF7A00"}}>E</span><span style={{color: "#FCD400"}}>T</span><span style={{color: "#267800"}}>R</span><span style={{color: "#007CC2"}}>I</span><span style={{color: "#9900CF"}}>S</span></StyledTetrisH1>
           <Stage stage={stage} />
           <aside>
+            <StyledTetrisH1 style={{"font-size": 20}}>Dalej</StyledTetrisH1>
           </aside>
         </StyledTetris>
-        {gameOver ? (
+        <StyledTetris style={{left: "calc(100% - 300px)"}}>
+          <StyledTetrisH1 style={{"font-size": 25}}><span style={{color: "#DB0000"}}>W</span><span style={{color: "#FF7A00"}}>y</span><span style={{color: "#FCD400"}}>n</span><span style={{color: "#267800"}}>i</span><span style={{color: "#007CC2"}}>k</span></StyledTetrisH1>
+          <StyledTetrisH1 style={{"font-size": 35}}>{score}</StyledTetrisH1>
+        </StyledTetris>
+        
+      </StyledTetrisBoard>
+      {gameOver ? (
             <StyledOverlay style={{background: "rgba(92, 0, 0, .8)"}}>
               <OverlayMainAction>
                 <StyledTetrisH1 style={{"font-size": 100}}>Przegrałeś</StyledTetrisH1>
@@ -153,7 +158,6 @@ const Tetris = () => {
             </OverlayBottomAction>
           </StyledOverlay>
         )}
-      </StyledTetrisBoard>
     </StyledTetrisWrapper>
   );
 };
