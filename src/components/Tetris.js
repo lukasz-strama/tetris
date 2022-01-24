@@ -74,14 +74,12 @@ const Tetris = () => {
   };
 
   const dropPlayer = () => {
-    // We don't need to run the interval when we use the arrow down to
-    // move the tetromino downwards. So deactivate it for now.
+    // move the tetromino downwards
     setDropTime(null);
     drop();
   };
 
   // This one starts the game
-  // Custom hook by Dan Abramov
   useInterval(() => {
     drop();
   }, dropTime);
@@ -112,7 +110,7 @@ const Tetris = () => {
       <StyledTetrisBoard>
         
         <StyledTetris>
-          <StyledTetrisH1>TETRIS</StyledTetrisH1>
+          <StyledTetrisH1><span style={{color: "#DB0000"}}>T</span><span style={{color: "#FF7A00"}}>E</span><span style={{color: "#FCD400"}}>T</span><span style={{color: "#267800"}}>R</span><span style={{color: "#007CC2"}}>I</span><span style={{color: "#9900CF"}}>S</span></StyledTetrisH1>
           <Stage stage={stage} />
           <aside>
           </aside>
